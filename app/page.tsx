@@ -1,25 +1,46 @@
 "use client";
-import Image from "next/image";
-import { MenuDropDown } from "./components/Menu";
+import Navbar from "./components/NavBar";
+import { simpleBlogCard } from "./lib/interface";
+import { client, urlFor } from "./lib/sanity";
+import { useState, useEffect } from 'react'
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+const imgLink = 'https://apod.nasa.gov/apod/image/2402/NGC1365_v4.jpg';
 
-const imgLink = 'https://apod.nasa.gov/apod/image/2401/OrionRising_Slipko_2048.jpg';
+async function getData(): Promise<simpleBlogCard[] | null> {
+  const query = `
+  *[_type == 'blog'] | order(_createdAt desc) {
+    title,
+      smallDescription,
+      "currentSlug": slug.current,
+      titleImage
+  }`;
+
+  const data = await client.fetch(query);
+
+  return data;
+}
 
 export default function Home() {
+  const [data, setData] = useState<simpleBlogCard[] | null>()
+  const [isLoading, setLoading] = useState(true)
+
+  useEffect(() => {
+    getData()
+      .then((data) => {
+        setData(data)
+        setLoading(false)
+      })
+  }, [])
+  if (isLoading) return
+  if (!data) return
+  console.log(data)
+
   return (
     <main>
-      <nav className="w-full relative flex-col items-center bg-gray-300 dark:bg-black">
-        <div className="w-full flex justify-between gap-5 items-center py-[9px]">
-          <div className="flex items-center gap-4 mx-5 ">
-            <h1 className="text-xl">AstroVoyage</h1>
-            <Image className="invert" src={"/telescope.svg"} alt="telescope" width={50} height={50} />
-          </div>
-          <div className="mx-5">
-            <MenuDropDown />
-          </div>
-        </div>
-      </nav>
-      
-      <div className="w-full" style={{ backgroundImage: `url('${imgLink}')` }}>
+      <Navbar />
+
+      <div style={{ backgroundImage: `url('${imgLink}')` }} className="w-full h-full bg-cover bg-center">
         <div className="py-52 mx-5">
           <div className="flex items-center justify-center text-7xl py-9 font-extrabold">
             Astro Voyage
@@ -27,6 +48,22 @@ export default function Home() {
           <div className="flex items-center justify-center text-5xl font-thin">
             Embark on a Journey of Discovery
           </div>
+        </div>
+      </div>
+
+      <div className="bg-white py-[6rem]">
+        <div className="flex flex-col text-4xl  font-light justify-center items-center mx-auto text-black">
+          Latest News
+
+          <hr className="h-[3px] border-none bg-[#5094ff] w-[20rem] mt-5" />
+          {
+            <div className="py-20" key={0}>
+              <h3 className="text-2xl font-bold">{data[0].title}</h3>
+              <Button asChild className="relative flex mx-auto w-[6rem] mt-7 text-white rounded-2xl">
+                <Link href={`/news/${data[0].currentSlug}`}>Read More</Link>
+              </Button>
+            </div>
+          }
         </div>
       </div>
     </main>
