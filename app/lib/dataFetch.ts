@@ -1,6 +1,6 @@
-import { client, urlFor } from "../lib/sanity";
+import { client } from "../lib/sanity";
 import { simpleBlogCard } from "../lib/interface";
-
+import { loadEnvConfig } from '@next/env'
 
 export async function getBlogData(): Promise<simpleBlogCard[] | null> {
     const query = `
@@ -17,6 +17,9 @@ export async function getBlogData(): Promise<simpleBlogCard[] | null> {
 }
 
 export async function getImgLink(): Promise<string | null> {
+    const projectDir = process.cwd()
+    console.log(loadEnvConfig(projectDir))
+
     console.log(process.env)
     console.log(process.env.apod)
     const res = await fetch('https://api.nasa.gov/planetary/apod?api_key=' + process.env.apod)
