@@ -1,6 +1,5 @@
 import { client } from "../lib/sanity";
 import { simpleBlogCard } from "../lib/interface";
-import { loadEnvConfig } from '@next/env'
 
 export async function getBlogData(): Promise<simpleBlogCard[] | null> {
     const query = `
@@ -17,13 +16,7 @@ export async function getBlogData(): Promise<simpleBlogCard[] | null> {
 }
 
 export async function getImgLink(): Promise<string | null> {
-    const projectDir = process.cwd()
-    console.log(loadEnvConfig(projectDir))
-
-    console.log(process.env)
-    console.log(process.env.apod)
-    const res = await fetch('https://api.nasa.gov/planetary/apod?api_key=' + process.env.apod)
-    console.log(res)
+    const res = await fetch('https://api.nasa.gov/planetary/apod?api_key=9U97fTlEQlgzeR6jh3byrghX2Y8xuLHMDLRYStNH')
     const data = await res.json()
     return data.hdurl ?? 'https://apod.nasa.gov/apod/image/2402/NGC1365_v4.jpg'
 }
