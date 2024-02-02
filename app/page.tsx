@@ -1,40 +1,38 @@
 "use client";
+
 import Navbar from "./components/NavBar";
 import { simpleBlogCard } from "./lib/interface";
-import { client, urlFor } from "./lib/sanity";
 import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-const imgLink = 'https://apod.nasa.gov/apod/image/2402/NGC1365_v4.jpg';
+import { getBlogData, getImgLink } from "./lib/dataFetch";
 
-async function getData(): Promise<simpleBlogCard[] | null> {
-  const query = `
-  *[_type == 'blog'] | order(_createdAt desc) {
-    title,
-      smallDescription,
-      "currentSlug": slug.current,
-      titleImage
-  }`;
-
-  const data = await client.fetch(query);
-
-  return data;
-}
 
 export default function Home() {
-  const [data, setData] = useState<simpleBlogCard[] | null>()
-  const [isLoading, setLoading] = useState(true)
+  const [blog, setBlogData] = useState<simpleBlogCard[] | null>()
+  const [isBlogLoading, setBlogLoading] = useState(true)
+
+  const [imgLink, setImgLink] = useState<string | null>()
+  const [isLinkLoading, setLinkLoading] = useState(true)
 
   useEffect(() => {
-    getData()
+    getBlogData()
       .then((data) => {
-        setData(data)
-        setLoading(false)
+        setBlogData(data)
+        setBlogLoading(false)
       })
   }, [])
-  if (isLoading) return
-  if (!data) return
-  console.log(data)
+
+  useEffect(() => {
+    getImgLink()
+      .then((data) => {
+        setImgLink(data)
+        setLinkLoading(false)
+      })
+  }, [])
+
+  if (isBlogLoading || isLinkLoading || !blog || !imgLink)  return
+  
 
   return (
     <main>
@@ -58,9 +56,9 @@ export default function Home() {
           <hr className="h-[3px] border-none bg-[#5094ff] w-[20rem] mt-5" />
           {
             <div className="pt-15 pb-[1rem]" key={0}>
-              <h3 className="text-2xl font-bold text-center justify-center px-5 pt-5">{data[0].title}</h3>
+              <h3 className="text-2xl font-bold text-center justify-center px-5 pt-5">{blog[0].title}</h3>
               <Button asChild className="relative flex mx-auto w-[6rem] mt-7 text-white rounded-2xl">
-                <Link href={`/news/${data[0].currentSlug}`}>Read More</Link>
+                <Link href={`/news/${blog[0].currentSlug}`}>Read More</Link>
               </Button>
             </div>
           }
