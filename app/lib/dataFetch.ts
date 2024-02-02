@@ -19,7 +19,7 @@ export async function getBlogData(): Promise<simpleBlogCard[] | null> {
 }
 
 export async function getImgLink(): Promise<string | null> {
-    console.log(config)
+    console.log(config())
     console.log(process.env.apod)
     const res = await fetch('https://api.nasa.gov/planetary/apod?api_key=' + process.env.apod)
     console.log(res)
