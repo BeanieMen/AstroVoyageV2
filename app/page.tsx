@@ -42,10 +42,10 @@ export default function Home() {
 
       <div style={{ backgroundImage: `url('${imgLink}')` }} className="w-full h-full bg-cover bg-center">
         <div className="py-52 mx-5">
-          <div className="flex items-center justify-center text-7xl py-9 font-extrabold">
+          <div className="flex  px-5 text-center justify-center text-7xl py-9 font-extrabold">
             Astro Voyage
           </div>
-          <div className="flex items-center justify-center text-5xl font-thin">
+          <div className="flex text-center px-5 justify-center text-5xl font-thin">
             Embark on a Journey of Discovery
           </div>
         </div>
@@ -57,8 +57,8 @@ export default function Home() {
 
           <hr className="h-[3px] border-none bg-[#5094ff] w-[20rem] mt-5" />
           {
-            <div className="py-20" key={0}>
-              <h3 className="text-2xl font-bold">{data[0].title}</h3>
+            <div className="pt-15 pb-[1rem]" key={0}>
+              <h3 className="text-2xl font-bold text-center justify-center px-5 pt-5">{data[0].title}</h3>
               <Button asChild className="relative flex mx-auto w-[6rem] mt-7 text-white rounded-2xl">
                 <Link href={`/news/${data[0].currentSlug}`}>Read More</Link>
               </Button>
