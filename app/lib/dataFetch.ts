@@ -1,7 +1,5 @@
 import { client, urlFor } from "../lib/sanity";
 import { simpleBlogCard } from "../lib/interface";
-import { config } from "dotenv";
-config()
 
 
 export async function getBlogData(): Promise<simpleBlogCard[] | null> {
@@ -19,7 +17,7 @@ export async function getBlogData(): Promise<simpleBlogCard[] | null> {
 }
 
 export async function getImgLink(): Promise<string | null> {
-    console.log(config())
+    console.log(process.env)
     console.log(process.env.apod)
     const res = await fetch('https://api.nasa.gov/planetary/apod?api_key=' + process.env.apod)
     console.log(res)
