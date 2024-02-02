@@ -1,6 +1,7 @@
 import { client, urlFor } from "../lib/sanity";
 import { simpleBlogCard } from "../lib/interface";
-
+import { config } from "dotenv";
+config()
 
 export async function getBlogData(): Promise<simpleBlogCard[] | null> {
     const query = `
