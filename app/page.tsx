@@ -33,6 +33,7 @@ export default function Home() {
   return (
     <main>
       <Navbar />
+      
       {/* apod image background corner */}
       <div className="w-full h-full bg-cover bg-center bg-[url('/apod.jpg')]">
         <div className="py-52 mx-5">
