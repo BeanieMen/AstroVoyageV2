@@ -74,7 +74,7 @@ export default function Home() {
       {/* Favourites corner */}
       <div className="bg-white py-[6rem]">
         <div className="flex flex-col text-4xl  font-light justify-center items-center mx-auto text-black">
-          Our favourite's
+          Our favourite&apos;s
           <hr className="h-[5px] border-none bg-[#5094ff] w-[15rem] my-[3rem]" />
           <ImageCarousel/>
         </div>
