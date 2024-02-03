@@ -23,11 +23,11 @@ jobs:
 
       - name: Download NASA Image and Commit
         run: |
+          cd head
           API_URL="https://api.nasa.gov/planetary/apod"
           API_KEY=${{ secrets.APOD }}
-          DOWNLOAD_DIR="/public"
+          DOWNLOAD_DIR="public"
           IMAGE_FILENAME="apod.jpg"
-          ls main
           # Make request to NASA APOD API using curl
           DATA=$(curl -s "$API_URL?api_key=$API_KEY")
 
