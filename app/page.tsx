@@ -72,7 +72,7 @@ export default function Home() {
         </div>
       </div>
 
-      <footer className="bg-[#01010e] h-[10rem] w-screen">
+      <footer className="bg-[#01010e] h-[10rem] w-full">
 
       </footer>
 
