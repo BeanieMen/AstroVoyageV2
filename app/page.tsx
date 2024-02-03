@@ -5,6 +5,8 @@ import { simpleBlogCard } from "./lib/interface";
 import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+
+import ImageCarousel from "./components/Carousel";
 import { getBlogData, getImgLink } from "./lib/dataFetch";
 
 
@@ -38,6 +40,7 @@ export default function Home() {
     <main>
       <Navbar />
 
+      {/* apod image background corner */}
       <div style={{ backgroundImage: `url('${imgLink}')` }} className="w-full h-full bg-cover bg-center">
         <div className="py-52 mx-5">
           <div className="flex  px-5 text-center justify-center text-7xl py-9 font-extrabold">
@@ -49,6 +52,7 @@ export default function Home() {
         </div>
       </div>
 
+      {/*  News corner */}
       <div className="bg-white py-[6rem]">
         <div className="flex flex-col text-4xl  font-light justify-center items-center mx-auto text-black">
           Latest News
@@ -64,6 +68,20 @@ export default function Home() {
           }
         </div>
       </div>
+
+      {/* Favourites corner */}
+      <div className="bg-white py-[6rem]">
+        <div className="flex flex-col text-4xl  font-light justify-center items-center mx-auto text-black">
+          Our favourite&apos;s
+          <hr className="h-[5px] border-none bg-[#5094ff] w-[15rem] my-[3rem]" />
+          <ImageCarousel/>
+        </div>
+      </div>
+
+      <footer className="bg-[#01010e] h-[10rem] w-screen">
+
+      </footer>
+
     </main>
   );
 }
