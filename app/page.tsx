@@ -8,6 +8,7 @@ import Link from "next/link";
 
 import ImageCarousel from "./components/Carousel";
 import { getBlogData } from "./lib/dataFetch";
+import { url } from "inspector";
 
 
 export default function Home() {
@@ -33,7 +34,7 @@ export default function Home() {
     <main>
       <Navbar />
       {/* apod image background corner */}
-      <div style={{ backgroundImage: `public/apod.jpg` }} className="w-full h-full bg-cover bg-center">
+      <div className="w-full h-full bg-cover bg-center bg-[url('/apod.jpg')]">
         <div className="py-52 mx-5">
           <div className="flex  px-5 text-center justify-center text-7xl py-9 font-extrabold">
             Astro Voyage
