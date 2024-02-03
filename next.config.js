@@ -8,6 +8,11 @@ const nextConfig = {
         hostname: "cdn.sanity.io",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "images-assets.nasa.gov",
+        port: "",
+      },
     ],
   },
 };
