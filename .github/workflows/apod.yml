@@ -14,7 +14,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Git
-        run: git config --global user.email "actions@github.com" && git config --global user.name "GitHub Actions"
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
 
       - name: Download NASA Image and Commit
         run: |
@@ -40,6 +42,9 @@ jobs:
             git add "$IMAGE_PATH"
             git commit -m "Add NASA image for $(date +%Y-%m-%d)"
             echo "NASA image downloaded and committed: $IMAGE_PATH"
+
+            # Push changes to the repository
+            git push origin HEAD:${GITHUB_REF}
           else
             echo "No HD image available."
           fi
