@@ -12,7 +12,7 @@ export default function Ring() {
 		  castShadow
 		  ref={ref}>
 			 <ringGeometry args={[5,5.05, 100]} />
-			 <meshBasicMaterial attach="material" color="white" side={DoubleSide} />
+			 <meshLambertMaterial attach="material" color="white" side={DoubleSide} />
 	   </mesh>
 	);
  }

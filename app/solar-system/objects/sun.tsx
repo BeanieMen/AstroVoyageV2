@@ -15,7 +15,7 @@ export default function Sun(props: { position: [number, number, number] }) {
 			{...props}
 			ref={meshRef}>
 			<sphereGeometry args={[0.5, 50, 50]} />
-			<meshStandardMaterial map={imageMap} />
+			<meshStandardMaterial emissive={'red'} emissiveIntensity={2} map={imageMap} />
 		</mesh>
 	)
 }
