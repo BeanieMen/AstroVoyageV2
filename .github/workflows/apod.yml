@@ -25,9 +25,9 @@ jobs:
         run: |
           API_URL="https://api.nasa.gov/planetary/apod"
           API_KEY=${{ secrets.apod }}
-          DOWNLOAD_DIR="public"
+          DOWNLOAD_DIR="/public"
           IMAGE_FILENAME="apod.jpg"
-
+          ls
           # Make request to NASA APOD API using curl
           DATA=$(curl -s "$API_URL?api_key=$API_KEY")
 
