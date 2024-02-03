@@ -26,6 +26,9 @@ export function MenuDropDown() {
         <DropdownMenuItem onClick={() => window.location.href = "/"}>
           Plate Solver (wip)
         </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => window.location.href = "/solar-system"}>
+          Solar System(wip)
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
