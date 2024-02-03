@@ -7,15 +7,14 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 import ImageCarousel from "./components/Carousel";
-import { getBlogData, getImgLink } from "./lib/dataFetch";
+import { getBlogData } from "./lib/dataFetch";
 
 
 export default function Home() {
   const [blog, setBlogData] = useState<simpleBlogCard[] | null>()
   const [isBlogLoading, setBlogLoading] = useState(true)
 
-  const [imgLink, setImgLink] = useState<string | null>()
-  const [isLinkLoading, setLinkLoading] = useState(true)
+
 
   useEffect(() => {
     getBlogData()
@@ -25,23 +24,16 @@ export default function Home() {
       })
   }, [])
 
-  useEffect(() => {
-    getImgLink()
-      .then((data) => {
-        setImgLink(data)
-        setLinkLoading(false)
-      })
-  }, [])
 
-  if (isBlogLoading || isLinkLoading || !blog || !imgLink)  return
+
+  if (isBlogLoading || !blog)  return
   
 
   return (
     <main>
       <Navbar />
-
       {/* apod image background corner */}
-      <div style={{ backgroundImage: `url('${imgLink}')` }} className="w-full h-full bg-cover bg-center">
+      <div style={{ backgroundImage: `public/apod.jpg` }} className="w-full h-full bg-cover bg-center">
         <div className="py-52 mx-5">
           <div className="flex  px-5 text-center justify-center text-7xl py-9 font-extrabold">
             Astro Voyage

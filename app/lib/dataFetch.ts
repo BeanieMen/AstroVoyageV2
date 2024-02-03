@@ -14,9 +14,3 @@ export async function getBlogData(): Promise<simpleBlogCard[] | null> {
 
     return data;
 }
-
-export async function getImgLink(): Promise<string | null> {
-    const res = await fetch('https://api.nasa.gov/planetary/apod?api_key=9U97fTlEQlgzeR6jh3byrghX2Y8xuLHMDLRYStNH')
-    const data = await res.json()
-    return data.hdurl ?? 'https://apod.nasa.gov/apod/image/2402/NGC1365_v4.jpg'
-}
