@@ -23,7 +23,7 @@ jobs:
 
       - name: Download NASA Image and Commit
         run: |
-          cd head
+          cd main
           API_URL="https://api.nasa.gov/planetary/apod"
           API_KEY=${{ secrets.APOD }}
           DOWNLOAD_DIR="public"
