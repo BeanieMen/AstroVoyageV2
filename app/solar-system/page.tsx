@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Canvas, extend } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import Sun from './objects/sun'
@@ -18,6 +18,14 @@ export default function Solar() {
 	const { bloom } = useControls({
 		bloom: false,
 	})
+
+	useEffect(() => {
+		document.body.style.overflow = 'hidden';
+		return () => {
+			document.body.style.overflow = 'visible';
+		};
+	}, []);
+	
 	return (
 		<div className='relative h-screen'>
 
@@ -40,7 +48,8 @@ export default function Solar() {
 					<Planet position={[0, 0, 0]} radius={5} image={'/imgs/earth.jpg'} />
 				</Canvas>
 			</div>
-			<div className='absolute top-[92.5%] left-1/2 transform -translate-x-[92.5%] -translate-y-1/2 z-10'>
+
+			<div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 '>
 				<Leva fill />
 			</div>
 		</div>
