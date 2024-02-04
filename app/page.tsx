@@ -66,32 +66,26 @@ export default function Home() {
         </div>
       </div>
 
-      {/* related links corner */}
-      <div className="bg-white text-3xl font-light text-left text-black px-10 pt-[2rem] pb-[5rem] w-full">
-
-        <div className="flex">
-          <div className="flex flex-col w-[100%]">
-            <p className="text-left text-4xl mb-[3rem]">Other Galleries and related links</p>
-            <hr className="h-[2px] border-none bg-[#5094ff] w-[100%] my-[1rem]" />
-          </div>
+      {/* Related links corner */}
+      {/* Related links corner */}
+      <div className="bg-white text-xl sm:text-3xl font-light text-left text-black px-6 sm:px-10 pt-8 pb-20 w-full">
+        <div className="flex flex-col">
+          <p className="text-2xl sm:text-4xl mb-6">Other Galleries and related links</p>
+          <hr className="h-[2px] border-none bg-[#5094ff] w-full my-6" />
         </div>
-        <div className="flex-col">
-          <div className="flex justify-between">
-            <Link href='/solar-system'>
-              <div className="flex items-center">
-                <Image src='/solar.jpg' height={1000} width={1000} alt="solar" className="w-[100px] h-[100px] rounded-[100%] object-cover" />
-                <div className="ml-[5rem] text-4xl font-semibold items-center sm:text-2xl">Solar System Model</div>
-                <p className="ml-[7.5rem] items-center text-3xl font-light sm:text-xl">A Model of the solar system made using react three fiber</p>
-              </div>
-            </Link>
-          </div>
-
-          <div className="flex flex-col w-[100%]">
-            <hr className="h-[2px] border-none bg-[#5094ff] w-[100%] my-[1rem]" />
+        <div className="flex flex-col">
+          <Link href='/solar-system'>
+            <div className="flex items-center">
+              <Image src='/solar.jpg' height={1000} width={1000} alt="solar" className="w-16 h-16 rounded-full object-cover" />
+              <div className="ml-4 sm:ml-8 text-xl sm:text-4xl font-semibold">Solar System Model</div>
+              <p className="ml-4 sm:ml-12 text-lg sm:text-3xl font-light">A Model of the solar system made using react three fiber</p>
+            </div>
+          </Link>
+          <div className="flex flex-col w-full">
+            <hr className="h-[2px] border-none bg-[#5094ff] w-full my-6" />
           </div>
         </div>
       </div>
-
 
       {/* <footer className="bg-[#01010e] h-[10rem] w-full"> */}
 
