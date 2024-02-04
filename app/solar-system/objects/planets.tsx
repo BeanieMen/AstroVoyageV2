@@ -11,8 +11,8 @@ export default function Planet(props: { position: [number, number, number], radi
 
 	var t = 0
 	useFrame((state, delta) => {
-		meshRef.current!.position.z = props.radius * Math.sin(t*props.speed) 
-		meshRef.current!.position.x = props.radius * Math.cos(t*props.speed) 
+		meshRef.current!.position.z = props.radius * Math.sin(t * props.speed)
+		meshRef.current!.position.x = props.radius * Math.cos(t * props.speed)
 		t += 0.01
 	})
 
