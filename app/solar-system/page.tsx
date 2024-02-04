@@ -19,18 +19,12 @@ export default function Solar() {
 		bloom: false,
 	})
 
-	useEffect(() => {
-		document.body.style.overflow = 'hidden';
-		return () => {
-			document.body.style.overflow = 'visible';
-		};
-	}, []);
-	
 	return (
-		<div className='relative h-screen'>
-
+		<div className='relative h-screen overflow-hidden'>
+			<div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 '>
+				<Leva fill />
+			</div>
 			<div className='w-screen h-screen bg-black'>
-
 				<Navbar />
 				<Canvas >
 					{bloom ? (<EffectComposer disableNormalPass>
@@ -49,9 +43,7 @@ export default function Solar() {
 				</Canvas>
 			</div>
 
-			<div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 '>
-				<Leva fill />
-			</div>
+
 		</div>
 
 	)
