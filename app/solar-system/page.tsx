@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Canvas, extend } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import Sun from './objects/sun'
