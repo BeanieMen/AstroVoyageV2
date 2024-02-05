@@ -1,11 +1,10 @@
-import { NextApiRequest } from 'next';
 import fs from 'fs';
 import path from 'path';
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 
 
 
-export async function GET(req: NextApiRequest, context: any) {
+export async function GET(req: NextRequest, context: any) {
 
   try {
     const publicDirectory = path.join(process.cwd(), 'public');
