@@ -2,12 +2,11 @@
 // await astrometry.login()
 
 import { Astrometry } from '@/app/lib/astrometry';
-import { NextApiRequest } from 'next';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 
 
-export async function GET(req: NextApiRequest, context: any) {
+export async function GET(req: NextRequest, context: any) {
 
     try {
         const astrometry = new Astrometry('zlwawjrthmpelnsq')
