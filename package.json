@@ -18,6 +18,7 @@
     "@react-three/postprocessing": "^2.15.13",
     "@sanity/image-url": "^1.0.2",
     "@types/three": "^0.161.2",
+    "axios": "^1.6.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "leva": "^0.9.35",
